@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-family: Arial, sans-serif;
+            margin: 20px 0;
+            font-size: 28px;
+        }
+
+        .animation-container {
+            width: 100%;
+            height: 350px;
+            position: relative;
+            overflow: hidden;
+            background: url("background.svg") repeat-x;
+            background-size: cover;
+            animation: skyCycle 15s infinite alternate;
+        }
+
+        @keyframes skyCycle {
+            0% {
+                background-color: #87CEEB;
+            }
+
+            30% {
+                background-color: #3498db;
+            }
+
+            70% {
+                background-color: rgb(17, 107, 225);
+            }
+
+            100% {
+                background-color: rgb(3, 3, 66);
+            }
+        }
+
+        .ground {
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            z-index: 0;
+        }
+
+        @keyframes moveRightToLeft {
+            from {
+                left: 110%;
+            }
+
+            to {
+                left: -20%;
+            }
+        }
+        @keyframes moverightoleft {
+            from {
+                left :-20%;
+            }
+            to{
+                left : 110%;
+            }
+        }
+
+        @keyframes runInPlace {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .svg-element {
+            position: absolute;
+            height: auto;
+            bottom: 0%;
+        }
+
+        .dog {
+            left: 50%;
+            width: 200px;
+            z-index: 10;
+            animation: runInPlace 1s infinite ease-in-out;
+        }
+
+        .grass {
+            z-index: 5;
+            animation: moverightoleft 15s infinite linear;
+        }
+
+        .tree {
+            z-index: 1;
+            animation: moveRightToLeft 25s infinite linear;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Банхарын аялал</h1>
+
+    <div class="animation-container">
+        <svg class="ground" viewBox="100 0 700 50" preserveAspectRatio="none">
+            <ellipse cx="500" cy="50" rx="300" ry="50" fill="#008000">
+                <animate attributeName="cx" begin="0s" dur="40s" from="1000" to="-200" repeatCount="indefinite" />
+            </ellipse>
+        </svg>
+
+        <img src="mod1.svg" alt="Tree 1" class="svg-element tree" style="width: 180px; animation-delay: 0s;">
+        <img src="mod2.svg" alt="Tree 2" class="svg-element tree" style="width: 220px; animation-delay: -8s;">
+        <img src="mod3.svg" alt="Tree 3" class="svg-element tree" style="width: 200px; animation-delay: -16s;">
+
+        <img src="but1.svg" alt="Grass 1" class="svg-element grass" style="width: 160px; animation-delay: 0s;">
+        <img src="but2.svg" alt="Grass 2" class="svg-element grass" style="width: 160px; animation-delay: -5s;">
+        <img src="but3.svg" alt="Grass 3" class="svg-element grass" style="width: 160px; animation-delay: -10s;">
+
+        <img src="nohoi.svg" alt="Nohoi" class="svg-element dog">
+    </div>
+
+</body>
+
+</html>
